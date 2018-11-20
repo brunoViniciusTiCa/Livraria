@@ -11,9 +11,6 @@ package LivrariaProjetoPOO.basica;
  */
 public class Livro {
 
-    
-    
-    
         private int    idLivro;
         private String codlivro;
 	private String tituloLivro;

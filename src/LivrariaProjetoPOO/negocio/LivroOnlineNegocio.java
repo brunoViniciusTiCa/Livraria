@@ -8,7 +8,10 @@ package LivrariaProjetoPOO.negocio;
 import LivrariaProjetoPOO.basica.LivroOnline;
 import LivrariaProjetoPOO.interfaces.CrudLivroOnlineInterface;
 import LivrariaProjetoPOO.repositorio.LivroOnlineRepositorio;
+import LivrariaProjetoPOO.util.banco.Conexao;
 import LivrariaProjetoPOO.validacao.ExceptionMessage;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -17,6 +20,8 @@ import java.util.List;
  * @author BrunoTiCaVini
  */
 public class LivroOnlineNegocio implements CrudLivroOnlineInterface{
+    
+     Conexao conexao = new Conexao();
     
     
      private final LivroOnlineRepositorio livroOnlineRepositorio;
@@ -136,8 +141,20 @@ public class LivroOnlineNegocio implements CrudLivroOnlineInterface{
         return true;
     }
     
+   /* public boolean verificarCodigo(LivroOnline livroOnline) throws SQLException, Exception{
     
-    public  void validarAtributosOnline(LivroOnline livroOnline) throws SQLException, Exception{
+        for(int i = 0; i < livroOnline.getCodlivro().length(); i++){
+        
+            
+        } 
+    
+    
+        return true;
+    }*/
+    
+  
+    
+    public void validarAtributosOnline(LivroOnline livroOnline) throws SQLException, Exception{
     
          validarCodOnlinle(livroOnline);
          validarTituloLivroOnline(livroOnline);
@@ -145,11 +162,5 @@ public class LivroOnlineNegocio implements CrudLivroOnlineInterface{
          validarDescricaoLivroOnline(livroOnline);
          validarSiteLivroOnline(livroOnline);
          validarClubeLibroOnline(livroOnline);
-         
-         
-    
     }
-    
- 
-    
 }

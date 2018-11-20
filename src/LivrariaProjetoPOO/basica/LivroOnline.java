@@ -10,11 +10,12 @@ package LivrariaProjetoPOO.basica;
  * @author BrunoTiCaVini
  */
 public class LivroOnline extends Livro{
-    
+
+       
     private int idLivroOnline;
     private String siteLivro;
     private String clubeLivro;
-
+    
     /**
      * @return the idLivroOnline
      */

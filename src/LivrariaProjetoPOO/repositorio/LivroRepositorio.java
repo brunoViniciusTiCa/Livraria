@@ -207,19 +207,19 @@ public class LivroRepositorio implements CrudLivroInterface{
         
            List<Livro> Livros = new ArrayList<>();
        
-        conexao = Conexao.getInstance();
-       
-        java.sql.Connection connection = conexao.Conectar();
-        
-        String sql = "Select * from livros WHERE autorLivro = ? ";
-        
-        PreparedStatement preparedstatement = connection.prepareStatement(sql);
-        
-        preparedstatement.setString(1, livro.getAutorLivro());
+            conexao = Conexao.getInstance();
 
-        ResultSet resultLivros = preparedstatement.executeQuery();
+            java.sql.Connection connection = conexao.Conectar();
+
+            String sql = "Select * from livros WHERE autorLivro = ? ";
+
+            PreparedStatement preparedstatement = connection.prepareStatement(sql);
+
+            preparedstatement.setString(1, livro.getAutorLivro());
+
+            ResultSet resultLivros = preparedstatement.executeQuery();
         
-        while(resultLivros.next()) {
+            while(resultLivros.next()) {
           
             Livro L = new Livro();
             
@@ -236,29 +236,27 @@ public class LivroRepositorio implements CrudLivroInterface{
         return Livros; 
     }
     
-      public boolean isCodExistente(Livro livro) throws SQLException, Exception {
+      
+      public boolean exists(Livro livro) throws SQLException, Exception {
         boolean exists = false;
-        
         conexao = Conexao.getInstance();
-        
         Connection connection = conexao.Conectar();
         
-        String sql = "SELECT codLivro FROM livros WHERE codLivro = ?";
+        String sql = "SELECT codLivro FROM livros WHERE codLivro = ? ";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, livro.getCodlivro());
 
         ResultSet resultLivro = preparedStatement.executeQuery();
         if (!resultLivro.next()) {
-            if (resultLivro.getString("Codigo Livro") != null) {
-               
-                exists = true;
+            if (resultLivro.next()) {
+               exists = true;
             }
         }
 
         conexao.Desconectar();
+        
         return exists;
     }
-
    
 }

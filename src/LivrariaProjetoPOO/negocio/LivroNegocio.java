@@ -126,20 +126,20 @@ public class LivroNegocio implements CrudLivroInterface{
         return true;
     }
     
-    public boolean isCodExistente(Livro livro) throws SQLException, Exception{
-        validarCodLivro(livro);
-        return livrorepositorio.isCodExistente(livro);
+    public boolean exists(Livro livro) throws SQLException, Exception{
         
+       return livrorepositorio.exists(livro);
     }
+    
+ 
        
     public void validarAtributos(Livro livro) throws SQLException, Exception{
     
-       
        validarDescricaoLivro(livro);
        validarAutorLivro(livro);
        validarTituloLivro(livro);
        validarCodLivro(livro);
-       isCodExistente(livro);
+       exists(livro);
        
        
     }

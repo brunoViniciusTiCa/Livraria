@@ -6,17 +6,20 @@
 package LivrariaProjetoPOO.validacao;
 
 import LivrariaProjetoPOO.basica.Livro;
+import java.sql.SQLException;
 
 /**
  *
  * @author BrunoTiCaVini
  */
-public interface ExceptionMessage {
+public interface ExceptionMessage{
     
-    public interface ExceptionMessageLivro {
+    public interface ExceptionMessageLivro{
         
         
-        public final static String LIVRO_JA_CADASTRADO = "Livro não pode ser cadastrado, já existe este livro!";
+        public final static String LIVRO_JA_CADASTRADO = "Livro não pode ser cadastrado, Codigo já existe!";
+        
+        public final static String LIVRO_TITULO_CADASTRADO = "Livro não pode ser cadastrado, Titulo já existe!";
         
         public final static String LIVRO_CODLIVRO_NULL = " Cod do livro nulo, cadastrar corretamente. ";
         

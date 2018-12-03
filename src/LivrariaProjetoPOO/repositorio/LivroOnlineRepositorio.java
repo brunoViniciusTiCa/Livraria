@@ -9,6 +9,7 @@ import LivrariaProjetoPOO.basica.Livro;
 import LivrariaProjetoPOO.basica.LivroOnline;
 import LivrariaProjetoPOO.interfaces.CrudLivroOnlineInterface;
 import LivrariaProjetoPOO.util.banco.Conexao;
+import LivrariaProjetoPOO.validacao.ExceptionMessage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -62,7 +63,7 @@ public class LivroOnlineRepositorio implements CrudLivroOnlineInterface{
         
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         
-        preparedStatement.setString    (1, livroOnline.getCodlivro());
+        preparedStatement.setString       (1, livroOnline.getCodlivro());
         preparedStatement.setString    (2, livroOnline.getTituloLivro());
         preparedStatement.setString    (3, livroOnline.getAutorLivro());
         preparedStatement.setString    (4, livroOnline.getDescricaoLivro());
@@ -134,6 +135,56 @@ public class LivroOnlineRepositorio implements CrudLivroOnlineInterface{
         return LivroOnlines; 
     }
     
+    public boolean existsCodigo(LivroOnline livroOnline) throws SQLException, Exception {
+          boolean exists = false;
+        
+          conexao = Conexao.getInstance();
+        
+          Connection connection = conexao.Conectar();
+     
+          String sql = "SELECT codLivro FROM LivroOn WHERE codLivro = ? ";
+
+          PreparedStatement preparedStatement = connection.prepareStatement(sql);
+          preparedStatement.setString(1, livroOnline.getCodlivro());
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()) {
+
+                   exists = true;
+                   throw new Exception(" ATENÇÃO: " + ExceptionMessage.ExceptionMessageLivro.LIVRO_JA_CADASTRADO);
+            }
+
+            conexao.Desconectar();
+
+            return exists;
+    }
+    
+    public boolean existsTitulo (LivroOnline livroOnline) throws SQLException, Exception{
+    
+        boolean exists = false;
+        
+          conexao = Conexao.getInstance();
+        
+          Connection connection = conexao.Conectar();
+     
+          String sql = "SELECT tituloLivro FROM LivroOn WHERE tituloLivro = ? ";
+
+          PreparedStatement preparedStatement = connection.prepareStatement(sql);
+          preparedStatement.setString(1, livroOnline.getTituloLivro());
+
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()) {
+
+                   exists = true;
+                   throw new Exception(" ATENÇÃO: " + ExceptionMessage.ExceptionMessageLivro.LIVRO_TITULO_CADASTRADO);
+            }
+
+            conexao.Desconectar();
+
+            return exists;
+    
+    
+    }
     
 
     

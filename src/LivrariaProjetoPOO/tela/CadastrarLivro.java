@@ -40,12 +40,12 @@ public class CadastrarLivro extends javax.swing.JFrame {
             
             livro = pLivro;
             lbl_tela.setText("Editar livro");
-            txt_codigo.setText(Uteis.toString(pLivro.getIdLivro()));
+            txt_codigo.setText(Uteis.toString(pLivro.getCodlivro()));
             txt_codigo.setEnabled(true);
             
-            txt_titulo.setText(livro.getTituloLivro());
-            txt_autor.setText(livro.getAutorLivro());
-            txt_descricao.setText(livro.getDescricaoLivro());
+            txt_titulo.setText(livro.getTituloLivro().toUpperCase());
+            txt_autor.setText(livro.getAutorLivro().toUpperCase());
+            txt_descricao.setText(livro.getDescricaoLivro().toUpperCase());
             
         }
     }
@@ -202,10 +202,11 @@ public class CadastrarLivro extends javax.swing.JFrame {
 
         if ( modoTela.equals(TELA_MODO_CADASTRAR)) {
 
-            livro.setCodlivro(txt_codigo.getText());
-            livro.setTituloLivro(txt_titulo.getText());
-            livro.setAutorLivro(txt_autor.getText());
-            livro.setDescricaoLivro(txt_descricao.getText());
+            
+            livro.setCodlivro(txt_codigo.getText().toUpperCase());
+            livro.setTituloLivro(txt_titulo.getText().toUpperCase());
+            livro.setAutorLivro(txt_autor.getText().toUpperCase());
+            livro.setDescricaoLivro(txt_descricao.getText().toUpperCase());
             
             
            
@@ -220,10 +221,10 @@ public class CadastrarLivro extends javax.swing.JFrame {
         }else if (modoTela.equals(TELA_MODO_EDITAR) ){
 
             try {
-                 livro.setCodlivro(txt_codigo.getText());
-                 livro.setTituloLivro(txt_titulo.getText());
-                 livro.setAutorLivro(txt_autor.getText());
-                 livro.setDescricaoLivro(txt_descricao.getText());
+                 livro.setCodlivro(txt_codigo.getText().toUpperCase());
+                 livro.setTituloLivro(txt_titulo.getText().toUpperCase());
+                 livro.setAutorLivro(txt_autor.getText().toUpperCase());
+                 livro.setDescricaoLivro(txt_descricao.getText().toUpperCase());
 
                 livroFachada.alterarLivro(livro);
                 Uteis.AlertInfo(this,"Livro atualizado com sucesso!!!");

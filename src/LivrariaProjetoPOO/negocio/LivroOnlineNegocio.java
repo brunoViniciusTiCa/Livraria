@@ -5,6 +5,7 @@
  */
 package LivrariaProjetoPOO.negocio;
 
+import LivrariaProjetoPOO.basica.Livro;
 import LivrariaProjetoPOO.basica.LivroOnline;
 import LivrariaProjetoPOO.interfaces.CrudLivroOnlineInterface;
 import LivrariaProjetoPOO.repositorio.LivroOnlineRepositorio;
@@ -141,16 +142,12 @@ public class LivroOnlineNegocio implements CrudLivroOnlineInterface{
         return true;
     }
     
-   /* public boolean verificarCodigo(LivroOnline livroOnline) throws SQLException, Exception{
-    
-        for(int i = 0; i < livroOnline.getCodlivro().length(); i++){
-        
-            
-        } 
-    
-    
-        return true;
-    }*/
+   public boolean existsCodigo(LivroOnline livroOnline) throws SQLException, Exception{
+         return livroOnlineRepositorio.existsCodigo(livroOnline);
+    }
+    public boolean existsTitulo(LivroOnline livroOnline) throws SQLException, Exception{
+        return livroOnlineRepositorio.existsTitulo(livroOnline);
+    }
     
   
     
@@ -162,5 +159,7 @@ public class LivroOnlineNegocio implements CrudLivroOnlineInterface{
          validarDescricaoLivroOnline(livroOnline);
          validarSiteLivroOnline(livroOnline);
          validarClubeLibroOnline(livroOnline);
+         existsCodigo(livroOnline);
+         existsTitulo(livroOnline);
     }
 }

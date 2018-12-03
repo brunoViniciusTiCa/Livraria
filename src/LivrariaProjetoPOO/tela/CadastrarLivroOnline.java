@@ -41,14 +41,14 @@ public class CadastrarLivroOnline extends javax.swing.JFrame {
             
             livroonline = pLivro;
             lbl_tela.setText("Editar livro");
-            txt_codigoOnline.setText(Uteis.toString(pLivro.getIdLivroOnline()));
+            txt_codigoOnline.setText(Uteis.toString(pLivro.getCodlivro()));
             txt_codigoOnline.setEnabled(true);
             
-            txt_tituloOnline.setText(livroonline.getTituloLivro());
-            txt_autorOnline.setText(livroonline.getAutorLivro());
-            txt_descricaoOnline.setText(livroonline.getDescricaoLivro());
-            txt_siteOnline.setText(livroonline.getSiteLivro());
-            txt_clubeOnline.setText(livroonline.getClubeLivro());
+            txt_tituloOnline.setText(livroonline.getTituloLivro().toUpperCase());
+            txt_autorOnline.setText(livroonline.getAutorLivro().toUpperCase());
+            txt_descricaoOnline.setText(livroonline.getDescricaoLivro().toUpperCase());
+            txt_siteOnline.setText(livroonline.getSiteLivro().toUpperCase());
+            txt_clubeOnline.setText(livroonline.getClubeLivro().toUpperCase());
             
             
         }
@@ -87,20 +87,19 @@ public class CadastrarLivroOnline extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(240, 181, 94));
+        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
 
         lbl_tela.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        lbl_tela.setForeground(new java.awt.Color(102, 51, 0));
         lbl_tela.setText("Cadastro de livros Onlines");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(241, 241, 241)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_tela)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(166, 166, 166))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -270,12 +269,12 @@ public class CadastrarLivroOnline extends javax.swing.JFrame {
 
         if ( modoTela.equals(TELA_MODO_CADASTRAR)) {
 
-            livroonline.setCodlivro(txt_codigoOnline.getText());
-            livroonline.setTituloLivro(txt_tituloOnline.getText());
-            livroonline.setAutorLivro(txt_autorOnline.getText());
-            livroonline.setDescricaoLivro(txt_descricaoOnline.getText());
-            livroonline.setSiteLivro(txt_siteOnline.getText());
-            livroonline.setClubeLivro(txt_clubeOnline.getText());
+            livroonline.setCodlivro(txt_codigoOnline.getText().toUpperCase());
+            livroonline.setTituloLivro(txt_tituloOnline.getText().toUpperCase());
+            livroonline.setAutorLivro(txt_autorOnline.getText().toUpperCase());
+            livroonline.setDescricaoLivro(txt_descricaoOnline.getText().toUpperCase());
+            livroonline.setSiteLivro(txt_siteOnline.getText().toUpperCase());
+            livroonline.setClubeLivro(txt_clubeOnline.getText().toUpperCase());
             
            
 
@@ -289,12 +288,12 @@ public class CadastrarLivroOnline extends javax.swing.JFrame {
         }else if (modoTela.equals(TELA_MODO_EDITAR) ){
 
             try {
-                 livroonline.setCodlivro(txt_codigoOnline.getText());
-                 livroonline.setTituloLivro(txt_tituloOnline.getText());
-                 livroonline.setAutorLivro(txt_autorOnline.getText());
-                 livroonline.setDescricaoLivro(txt_descricaoOnline.getText());
-                 livroonline.setSiteLivro(txt_siteOnline.getText());
-                 livroonline.setClubeLivro(txt_clubeOnline.getText());
+                 livroonline.setCodlivro(txt_codigoOnline.getText().toUpperCase());
+                 livroonline.setTituloLivro(txt_tituloOnline.getText().toUpperCase());
+                 livroonline.setAutorLivro(txt_autorOnline.getText().toUpperCase());
+                 livroonline.setDescricaoLivro(txt_descricaoOnline.getText().toUpperCase());
+                 livroonline.setSiteLivro(txt_siteOnline.getText().toUpperCase());
+                 livroonline.setClubeLivro(txt_clubeOnline.getText().toUpperCase());
 
                 livroonlineFachada.alterarLivro(livroonline);
                 Uteis.AlertInfo(this,"Livro atualizado com sucesso!!!");
